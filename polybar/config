@@ -272,17 +272,9 @@ type = internal/network
 interface = wlp2s0
 
 interval = 3.0
-
-; Accumulate values from all interfaces
-; when querying for up/downspeed rate
 accumulate-stats = true
-
-; Consider an `UNKNOWN` interface state as up.
-; Some devices have an unknown state, even when they're running
 unknown-as-up = true
 
-; Available tags:
-;   <label-connected> (default)
 format-connected = %{A1:gnome-terminal -e nmtui:}<label-connected>%{A}
 format-connected-underline =  #456771
 
@@ -290,7 +282,6 @@ format-connected-underline =  #456771
 ;   <label-disconnected> (default)
 format-disconnected = %{A1:gnome-terminal -e nmtui:}<label-disconnected>%{A}
 
-; Available tokens:
 ;   %ifname%    [wireless+wired]
 ;   %local_ip%  [wireless+wired]
 ;   %local_ip6% [wireless+wired]
@@ -299,13 +290,10 @@ format-disconnected = %{A1:gnome-terminal -e nmtui:}<label-disconnected>%{A}
 ;   %upspeed%   [wireless+wired]
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
+
 label-connected =  %upspeed%  %downspeed%  %local_ip%
 label-connected-foreground = ${colors.foreground-alt}
 
-
-; Available tokens:
-;   %ifname%    [wireless+wired]
-; Default: (none)
 label-disconnected = not connected
 label-disconnected-foreground = ${colors.foreground-alt}
 
